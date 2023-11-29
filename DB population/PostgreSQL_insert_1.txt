@@ -1,0 +1,17 @@
+psql -U postgres
+
+\l
+\conninfo
+
+\c weather
+
+INSERT INTO cities (id, name) VALUES (0, 'Москва');
+INSERT INTO cities (id, "cityId", "dateTime", temperature, summary) VALUES (0, 0, 1698825968, 24, 'Переменная облачность. Без осадков.');
+
+\i /path/file.sql
+
+\dt cities
+\dt forecast
+
+DELETE FROM cities;
+DELETE FROM forecast;

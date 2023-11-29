@@ -1,0 +1,16 @@
+# if no parameters
+if [[ $# = 0 ]]
+then
+  ./jmeter
+else
+  if [[ $1 = 'gui' ]]
+  then
+    ./jmeter
+  else
+    rm $1-res 2> null
+    rm -r $1-report/ 2> null
+    ./jmeter -n -t  $1.jmx -l $1-res
+    ./jmeter -g $1-res -o ./$1-report/ -Jjmeter.reportgenerator.overall_granularity=1000
+  fi
+fi
+
