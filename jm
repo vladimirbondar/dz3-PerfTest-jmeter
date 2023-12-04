@@ -1,3 +1,5 @@
+timestamp=$(date +'%y%m%d-%H%M')
+
 # if no parameters
 if [[ $# = 0 ]]
 then
@@ -7,10 +9,10 @@ else
   then
     ./jmeter
   else
-    rm $1-res 2> null
-    rm -r $1-report/ 2> null
-    ./jmeter -n -t  $1.jmx -l $1-res
-    ./jmeter -g $1-res -o ./$1-report/ -Jjmeter.reportgenerator.overall_granularity=1000
+    # rm $1-res 2> null
+    # rm -r $1-report/ 2> null
+    ./jmeter -n -t  $1.jmx -l $1-res-$timestamp
+    ./jmeter -g $1-res-$timestamp -o ./$1-rep-$timestamp/ -Jjmeter.reportgenerator.overall_granularity=5000
   fi
 fi
 
